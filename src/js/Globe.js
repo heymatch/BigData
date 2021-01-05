@@ -5,7 +5,7 @@ class Globe{
         var path = d3.geoPath().projection(projection);
         var svg = d3.select("svg");
         var g = svg.append("g");
-        d3.json("https://gist.githubusercontent.com/mbostock/4090846/raw/07e73f3c2d21558489604a0bc434b3a5cf41a867/world-110m.json").then(function(topology) {
+        d3.json("https://heymatch.github.io/BigData/data/world-110m.json").then(function(topology) {
             g.selectAll("path")
             .data(topojson.feature(topology, topology.objects.countries).features)
             .enter().append("path")
