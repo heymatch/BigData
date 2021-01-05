@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>出國建議查詢系統</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./src/css/base.css">
+        <link rel="stylesheet" href="./src/css/map.css">
+        <script type="text/javascript" src="https://d3js.org/d3.v6.min.js"></script>
+        <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+        <script type="text/javascript" src="./src/js/Globe.js"></script>
+        <script type="text/javascript" src="./src/js/main.js"></script>
+    </head>
+    <body onload = "main()">
+        <div class="map">
+            <svg width="550" height="600"></svg>
+        </div>
+        <div class="menu">
+            <label>目前選擇的國家/地區</label>
+        </div>
+        <div class="reason"></div>
+        <div class="chart"></div>
+    </body>
+</html>
