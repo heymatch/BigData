@@ -1,28 +1,31 @@
+.dashboard{
+    text-align: center;
+}
 
 .map{
     width : 40vw;
     height : 90vh;
     padding : 0;
-    margin: 0;
+    margin: 0 auto;
     border: 1px solid black;
     float: left;
     overflow: auto;
 }
 
 .menu{
-    width : 20vw;
+    width : 15vw;
     height : 40vh;
     padding : 0;
-    margin: 0;
+    margin: 0 auto;
     border: 1px solid black;
     float: left;
 }
 
 .reason{
-    width : 30vw;
+    width : 35vw;
     height : 40vh;
     padding : 0;
-    margin: 0;
+    margin: 0 auto;
     border: 1px solid black;
     float: left;
 }
@@ -31,7 +34,7 @@
     width : 50vw;
     height : 50vh;
     padding : 0;
-    margin: 0;
+    margin: 0 auto;
     border: 1px solid black;
     float: left;
 }

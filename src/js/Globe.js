@@ -3,14 +3,23 @@ class Globe{
         var projection = d3.geoOrthographic()
                         .translate([280, 300]);
         var path = d3.geoPath().projection(projection);
+
         var svg = d3.select("svg");
-        var g = svg.append("g");
+
+        var ground = svg.append("g");
         d3.json("https://heymatch.github.io/BigData/data/world-110m.json").then(function(topology) {
-            g.selectAll("path")
+            ground.selectAll("path")
             .data(topojson.feature(topology, topology.objects.countries).features)
-            .enter().append("path")
+            .enter()
+            .append("path")
+            .attr("class", "land")
             .attr("d", path);
         });
+        ground.append("path")
+        .datum({type: "Sphere"})
+        .attr("class", "water")
+        .attr("d", path);
+        
         svg
         .call(d3.drag().on('drag', function(event, d){
           const rotate = projection.rotate();
@@ -20,7 +29,7 @@ class Globe{
             rotate[1] - event.dy * k,
             rotate[2]
           ]);
-          svg.selectAll("path").attr("d", path);
+          svg.selectAll("path.land").attr("d", path);
         }));
     }
 }

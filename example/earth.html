@@ -88,8 +88,8 @@ select {
 
 
   queue()
-  .defer(d3.json, "./../data/world-110m.json")
-  .defer(d3.tsv, "./../data/us-county-names.tsv")
+  .defer(d3.json, "https://heymatch.github.io/BigData/data/world-110m.json")
+  .defer(d3.tsv, "https://heymatch.github.io/BigData/data/us-county-names.tsv")
   .await(ready);
 
   //Main function
@@ -164,7 +164,7 @@ select {
         return function(t) {
           projection.rotate(r(t));
           svg.selectAll("path").attr("d", path)
-          .classed("focused", function(d, i) { return d.id == focusedCountry.id ? focused = d : false; });
+          .classed("focused", function(event, i) { return event.id == focusedCountry.id ? focused = event : false; });
         };
       })
       })();

@@ -1,5 +1,14 @@
-path {
+.land{
     stroke: white;
     stroke-width: 0.25px;
-    fill: grey;
+    fill: green;
+}
+
+.land:hover{
+    fill : red;
+}
+
+.water{
+    fill: blue;
+    
 }
