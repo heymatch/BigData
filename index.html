@@ -6,19 +6,39 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="./src/css/base.css">
         <link rel="stylesheet" href="./src/css/map.css">
+        <link rel="stylesheet" href="./src/css/menu.css">
         <script type="text/javascript" src="https://d3js.org/d3.v6.min.js"></script>
         <script type="text/javascript" src="https://d3js.org/topojson.v1.min.js"></script>
         <script type="text/javascript" src="./src/js/Globe.js"></script>
         <script type="text/javascript" src="./src/js/main.js"></script>
     </head>
     <body onload = "main()">
-        <div class="map">
-            <svg width="550" height="600"></svg>
+        <div class="dashboard">
+            <div class="map">
+                <svg width="550" height="600"></svg>
+            </div>
+            <div class="menu">
+                <p>目前選擇的國家/地區</p>
+                <select class="country">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                <br><br>
+                <select class="region">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                <br><br>
+                <input type="submit" value="查詢">
+            </div>
+            <div class="reason">
+                <p>
+                    測試用的推薦內容
+                </p>
+            </div>
+            <div class="chart">
+                
+            </div>
         </div>
-        <div class="menu">
-            <label>目前選擇的國家/地區</label>
-        </div>
-        <div class="reason"></div>
-        <div class="chart"></div>
     </body>
 </html>
