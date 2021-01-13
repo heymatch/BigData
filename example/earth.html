@@ -89,7 +89,7 @@ select {
 
   queue()
   .defer(d3.json, "https://heymatch.github.io/BigData/data/world-110m.json")
-  .defer(d3.tsv, "https://heymatch.github.io/BigData/data/us-county-names.tsv")
+  .defer(d3.tsv, "https://heymatch.github.io/BigData/data/world-country-names.tsv")
   .await(ready);
 
   //Main function
