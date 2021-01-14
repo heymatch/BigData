@@ -12,6 +12,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://apis.google.com/js/api.js"></script>
         <script type="text/javascript" src="./src/js/Globe.js"></script>
+        <script type="text/javascript" src="./src/js/BigQuery.js"></script>
         <script type="text/javascript" src="./src/js/main.js"></script>
     </head>
     <body onload = "main()">
@@ -35,7 +36,7 @@
                     <option value="2">2</option>
                 </select>
                 <br><br>
-                <input type="submit" value="查詢國家">
+                <input type="submit" value="查詢國家" onclick="query()">
                 <input type="submit" value="查詢地區">
                 <br><br>
                 <button id="sign-in-or-out-button" value="auth">Loading</button>
