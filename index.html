@@ -11,32 +11,32 @@
         <script type="text/javascript" src="https://d3js.org/topojson.v1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://apis.google.com/js/api.js"></script>
+        <script src="https://apis.google.com/js/auth.js"></script>
+        <script src="https://apis.google.com/js/client.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript" src="./src/js/Globe.js"></script>
         <script type="text/javascript" src="./src/js/BigQuery.js"></script>
+        <script type="text/javascript" src="./src/js/Chart.js"></script>
         <script type="text/javascript" src="./src/js/main.js"></script>
     </head>
-    <body onload = "main()">
+    <body onload = "init()">
         <div class="dashboard">
             <div class="map">
-                <svg width="550" height="600"></svg>
+                <svg id="globe" width="550" height="600"></svg>
             </div>
             <div class="menu">
                 <p>目前選擇的國家/地區</p>
                 <label>國家</label>
-                <select class="country">
-                    <option value="0">None</option>
-                    <option value="1">United States of America</option>
-                    <option value="2">Japan</option>
+                <select id="country" class="country">
+                    <option value="0">Loading</option>
                 </select>
                 <br><br>
                 <label>地區</label>
                 <select class="region">
                     <option value="0">None</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
                 </select>
                 <br><br>
-                <input type="submit" value="查詢國家" onclick="query()">
+                <input type="submit" value="查詢國家" onclick="displayChart(select_type)">
                 <input type="submit" value="查詢地區">
                 <br><br>
                 <button id="sign-in-or-out-button" value="auth">Loading</button>
@@ -46,8 +46,7 @@
                     測試用的推薦內容
                 </p>
             </div>
-            <div class="chart">
-                
+            <div id="chart" class="chart">
             </div>
         </div>
     </body>
