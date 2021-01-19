@@ -36,11 +36,11 @@
                     <option value="0">None</option>
                 </select> -->
 				<label>指標</label>
-                <select class="index">
-                    <option value="0">累積確診人數</option>
-					<option value="0">每日新增確診人數</option>
-					<option value="0">累積死亡人數</option>
-					<option value="0">確診人數增長率</option>
+                <select id="index" class="index" onchange="select_type=document.getElementById('index').value">
+                    <option value="cumulative_confirmed">累積確診人數</option>
+                    <option value="cumulative_deceased">累積死亡人數</option>
+					<option value="new_confirmed">每日新增確診人數</option>
+					<option value="growth_rate_confirmed">確診人數增長率</option>
                 </select>
                 <br><br>
                 <input type="submit" value="查詢國家" onclick="displayChart(select_type)">
