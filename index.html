@@ -31,13 +31,20 @@
                     <option value="0">Loading</option>
                 </select>
                 <br><br>
-                <label>地區</label>
+                <!--<label>地區</label>
                 <select class="region">
                     <option value="0">None</option>
+                </select> -->
+				<label>指標</label>
+                <select class="index">
+                    <option value="0">累積確診人數</option>
+					<option value="0">每日新增確診人數</option>
+					<option value="0">累積死亡人數</option>
+					<option value="0">確診人數增長率</option>
                 </select>
                 <br><br>
                 <input type="submit" value="查詢國家" onclick="displayChart(select_type)">
-                <input type="submit" value="查詢地區">
+                <!--<input type="submit" value="查詢地區">-->
                 <br><br>
                 <button id="sign-in-or-out-button" value="auth">Loading</button>
             </div>
