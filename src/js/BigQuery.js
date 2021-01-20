@@ -50,6 +50,7 @@ var BigQuery = {
         if (this.GoogleAuth.isSignedIn.get()) {
             // User is authorized and has clicked "Sign out" button.
             this.GoogleAuth.signOut();
+
         } else {
             // User is not signed in. Start Google auth flow.
             this.GoogleAuth.signIn();
@@ -62,9 +63,17 @@ var BigQuery = {
     
         if (isAuthorized) {
             $('#sign-in-or-out-button').html('Sign out');
-            initUI();
         } else {
             $('#sign-in-or-out-button').html('Sign In/Authorize');
+            
+        }
+
+        if (this.GoogleAuth.isSignedIn.get()) {
+            $("#select").removeAttr("disabled");
+            initUI();
+        }
+        else{
+            $("#select").attr("disabled");
         }
    
     },
