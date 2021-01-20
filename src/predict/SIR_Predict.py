@@ -4,11 +4,10 @@ import math
 import optuna
 import warnings
 import matplotlib
-%matplotlib inline
+#matplotlib inline
 import numpy as np
 import pandas as pd
 import matplotlib.cm as cm
-import dask.dataframe as dd
 from datetime import timedelta
 from datetime import datetime
 import matplotlib.pyplot as plt
@@ -30,6 +29,11 @@ deaths_df     = pd.read_csv('time_series_covid_19_deaths.csv')
 recoveries_df = pd.read_csv('time_series_covid_19_recovered.csv')
 population_df = pd.read_csv('locations_population.csv')
 country_file=''#file name of every single country
+
+result = {}
+result["country_name"] = []
+result["date"] = []
+result["point"] = []
 
 #生成國家人口dictionary,重新命名及處理空值
 def preprocess_population_dict():
@@ -93,6 +97,7 @@ def sir_model_fitting(country, cluster_population=500000000, passed_data=0, show
         return sus, inf, rec
 
     def fit_odeint(x, beta, gamma):
+        #print(" beta: ", beta, " gamma: ", gamma)
         return odeint(sir_model, (sus0, inf0, rec0), x, args=(beta, gamma))[:,1]
     
     #擬和函數
@@ -101,7 +106,10 @@ def sir_model_fitting(country, cluster_population=500000000, passed_data=0, show
     fitted = np.append(np.zeros((ind,1)), fitted)#把最前面還沒有發現案例的幾天的0補上去
     fitted=fitted.clip(0)#把順預測為負數的地方變0
     fitted=np.array([i if i.is_integer() else np.ceil(i)  for i in fitted])#把人數變整數
+
+    global result
     
+
     if show_plots:
         date_start=datetime.strptime("2020-1-22", "%Y-%m-%d")
         real_data_end=datetime.strptime("2020-12-06", "%Y-%m-%d")
@@ -125,8 +133,13 @@ def sir_model_fitting(country, cluster_population=500000000, passed_data=0, show
         print("Optimal parameters: beta =", round(popt[0],3), " gamma = ", round(popt[1],3))
         #print('Goodness of fit', round(r2_score(ydata, fit_odeint(xdata, *popt)),4)*100, ' %')
         print('Optimal parameters Standard Dev: std_beta =', np.round(np.sqrt(pcov[0][0]),3), ' std_gamma =', np.round(np.sqrt(pcov[1][1]),3))
-        fitted_df = pd.DataFrame(fitted.reshape(-1, len(fitted)),columns=totaldays)
-        fitted_df.to_csv(result_root+country_file+'/'+country_file+'.csv',index=False)
+        #fitted_df = pd.DataFrame([fitted.reshape(-1, len(fitted)), totaldays],columns=["data", "date"])
+        #fitted_df.to_csv(result_root+country_file+'/'+country_file+'.csv',index=False)
+        for i in range(len(fitted)):
+            result["country_name"].append(country)
+            result["date"].append(fitted[i])
+            result["point"].append(totaldays[i])
+            
     else:
         return fitted
     
@@ -163,3 +176,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print(result)
+    v = pd.DataFrame(data=result)
+    v.to_csv("./result.csv", index=False)
