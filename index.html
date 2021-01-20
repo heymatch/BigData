@@ -14,9 +14,12 @@
         <script src="https://apis.google.com/js/auth.js"></script>
         <script src="https://apis.google.com/js/client.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="./src/include/RungeKutta4.js"></script>
         <script type="text/javascript" src="./src/js/Globe.js"></script>
         <script type="text/javascript" src="./src/js/BigQuery.js"></script>
         <script type="text/javascript" src="./src/js/Chart.js"></script>
+        <script type="text/javascript" src="./src/js/SIR.js"></script>
+        <script type="text/javascript" src="./src/js/Alert.js"></script>
         <script type="text/javascript" src="./src/js/main.js"></script>
     </head>
     <body onload = "init()">
@@ -27,7 +30,7 @@
             <div class="menu">
                 <p>目前選擇的國家/地區</p>
                 <label>國家</label>
-                <select id="country" class="country">
+                <select id="country" class="country" onchange="precraw()">
                     <option value="0">Loading</option>
                 </select>
                 <br><br>
@@ -38,19 +41,21 @@
 				<label>指標</label>
                 <select id="index" class="index" onchange="select_type=document.getElementById('index').value">
                     <option value="cumulative_confirmed">累積確診人數</option>
+                    <option value="predicated_confirmed">確診中人數預測</option>
                     <option value="cumulative_deceased">累積死亡人數</option>
-					<option value="new_confirmed">每日新增確診人數</option>
-					<option value="growth_rate_confirmed">確診人數增長率</option>
+					<option value="new_confirmed">新增確診人數</option>
+                    <option value="ranking_confirmed">確診人數排名</option>
+                    <option value="test_SIR" hidden>SIR Model Test</option>
                 </select>
                 <br><br>
-                <input type="submit" value="查詢國家" onclick="displayChart(select_type)">
+                <input id="select" type="submit" value="查詢" onclick="displayChart(select_type)" disabled>
                 <!--<input type="submit" value="查詢地區">-->
                 <br><br>
                 <button id="sign-in-or-out-button" value="auth">Loading</button>
             </div>
             <div class="reason">
-                <p>
-                    測試用的推薦內容
+                <label>推薦或不推薦的原因</label>
+                <p id="alert">
                 </p>
             </div>
             <div id="chart" class="chart">
