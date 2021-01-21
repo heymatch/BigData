@@ -5,3 +5,11 @@
 .region{
     width: 5vw;
 }
+
+.danger{
+    color: red;
+}
+
+.safe{
+    color: green;
+}
