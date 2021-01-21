@@ -15,6 +15,7 @@
         <script src="https://apis.google.com/js/client.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="./src/include/RungeKutta4.js"></script>
+        <script src="https://unpkg.com/deeplearn@latest"></script>
         <script type="text/javascript" src="./src/js/Globe.js"></script>
         <script type="text/javascript" src="./src/js/BigQuery.js"></script>
         <script type="text/javascript" src="./src/js/Chart.js"></script>
@@ -42,7 +43,7 @@
                 <select id="index" class="index" onchange="select_type=document.getElementById('index').value">
                     <option value="cumulative_confirmed">累積確診人數</option>
                     <option value="predicated_confirmed">確診中人數預測</option>
-                    <option value="cumulative_deceased">累積死亡人數</option>
+                    <option value="new_deceased">新增死亡人數</option>
 					<option value="new_confirmed">新增確診人數</option>
                     <option value="ranking_confirmed">確診人數排名</option>
                     <option value="test_SIR" hidden>SIR Model Test</option>
