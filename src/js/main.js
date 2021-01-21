@@ -7,7 +7,6 @@ async function initUI(){
     $("#select").attr("disabled");
     let country_request = await BigQuery.request("SELECT country_name FROM bigquery-public-data.covid19_open_data.covid19_open_data GROUP BY country_name ORDER BY country_name");
     initOption(".country", country_request.result);
-    $("#select").removeAttr("disabled");
 }
 
 function initOption(tag, json){

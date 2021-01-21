@@ -69,7 +69,7 @@ var BigQuery = {
         }
 
         if (this.GoogleAuth.isSignedIn.get()) {
-            $("#select").removeAttr("disabled");
+            //$("#select").removeAttr("disabled");
             initUI();
         }
         else{
